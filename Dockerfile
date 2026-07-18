@@ -1,5 +1,5 @@
 # --- Build Stage ---
-FROM maven:3.9.8-eclipse-temurin-21 AS build
+FROM maven:3.9-eclipse-temurin-26 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
@@ -7,7 +7,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # --- Run Stage ---
-FROM eclipse-temurin:21-jdk-jammy
+FROM eclipse-temurin:26-jdk-jammy
 
 # Hugging Face security requirement: run as a non-root user with ID 1000
 RUN useradd -m -u 1000 user
