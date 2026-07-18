@@ -7,7 +7,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # --- Run Stage ---
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 
 # Hugging Face security requirement: run as a non-root user with ID 1000
 RUN useradd -m -u 1000 user
